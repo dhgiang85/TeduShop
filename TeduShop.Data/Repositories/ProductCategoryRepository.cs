@@ -19,7 +19,7 @@ namespace TeduShop.Data.Repositories
 
         public IEnumerable<ProductCategory> GetByAlias(string alias)
         {
-            return this.DbContext.ProductCategories.Where(x => x.Alias == alias);
+            return this.DbContext.ProductCategories.Where(x => x.Alias == alias).ToList();
         }
     }
 }
