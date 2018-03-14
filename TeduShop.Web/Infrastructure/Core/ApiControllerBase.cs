@@ -62,9 +62,9 @@ namespace TeduShop.Web.Infrastructure.Core
                 _errorService.Create(error);
                 _errorService.Save();
             }
-            catch (Exception)
+            catch 
             {
-                throw;
+              
             }
         }
     }

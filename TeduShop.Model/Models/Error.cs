@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TeduShop.Model.Models
 {
-    [Table("Error")]
+    [Table("Errors")]
     public class Error
     {
         [Key]
