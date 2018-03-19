@@ -14,7 +14,10 @@
 </head>
 <body>
 <div ng-controller ="myController">
-    10+20={{message}}
+    <input type="number" ng-model="num"/>value of textbox:{{num}}
+    <button ng-click="checkNumber()">click</button>
+    <br/>
+    {{message}}
 </div>
 </body>
 </html>
