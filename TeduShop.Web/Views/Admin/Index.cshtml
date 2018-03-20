@@ -13,7 +13,9 @@
     <script src="~/Scripts/spa/app.js"></script>
 </head>
 <body>
-<div ng-controller ="myController">
+<div ng-controller="myController">
+    @*<tedu-Shop-Directive></tedu-Shop-Directive>*@
+    <div tedu-Shop-Directive></div>
     <input type="number" ng-model="num"/>value of textbox:{{num}}
     <button ng-click="checkNumber()">click</button>
     <br/>

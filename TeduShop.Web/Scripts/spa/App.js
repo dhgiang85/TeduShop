@@ -1,22 +1,29 @@
-﻿/// <reference path="../plugins/angular/angular.js" />
+﻿/// <reference path="TeduShopDirective.html" />
+/// <reference path="TeduShopDirective.html" />
+/// <reference path="TeduShopDirective.html" />
+/// <reference path="../plugins/angular/angular.js" />
 
 var myApp = angular.module("myModule", []);
 
 myApp.controller("myController", schoolController);
-myApp.service('Validator', Validator);
-schoolController.$inject = ['$scope', 'Validator'];
+
+myApp.service("ValidatorService", ValidatorService);
+
+myApp.directive("teduShopDirective", teduShopDirective);
+
+schoolController.$inject = ['$scope', 'ValidatorService'];
 
 //delare
-function schoolController($scope, Validator)
+function schoolController($scope, ValidatorService)
 {
     //$scope.message = Validator.checkNumber(1);
     $scope.checkNumber = function () {
-        $scope.message = Validator.checkNumber($scope.num);
+        $scope.message = ValidatorService.checkNumber($scope.num);
     }
     $scope.num = 1;
 }
 
-function Validator($window) {
+function ValidatorService($window) {
     return {
         checkNumber : checkNumber
     }
@@ -26,5 +33,13 @@ function Validator($window) {
         } else {
             return "this is odd";
         }
+    }
+}
+
+function teduShopDirective() {
+    return {
+        //template:"<h1> This is my first custom directive"
+        restrict:"A",
+        templateUrl: "/Scripts/spa/teduShopDirective.html"
     }
 }
