@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Xml.Linq;
+using System.Collections.Generic;
 using TeduShop.Model.Abstract;
 
 namespace TeduShop.Model.Models
@@ -23,10 +23,7 @@ namespace TeduShop.Model.Models
 
         [Required]
         public int CategoryID { get; set; }
-
-        [ForeignKey("CategoryID")]
-        public virtual ProductCategory ProductCategory { get; set; }
-
+        
         [MaxLength(256)]
         public string Image { get; set; }
 
@@ -49,5 +46,12 @@ namespace TeduShop.Model.Models
         public bool? HotFlag { get; set; }
 
         public int? ViewCount { get; set; }
+
+        [ForeignKey("CategoryID")]
+        public virtual ProductCategory ProductCategory { get; set; }
+
+        public virtual IEnumerable<ProductTag> ProductTags { set; get; }
+
+
     }
 }
