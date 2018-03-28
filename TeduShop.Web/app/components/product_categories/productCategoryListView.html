@@ -28,6 +28,17 @@
         </div>
         <div class="box-body">
             <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="keyword" placeholder="Từ khóa">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" ng-click="search()" type="button">Tìm kiếm</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div>
+
+            </div>
+            <div class="row">
                 <div class="col-md-12">
                     <table class="table table-bordered">
                         <tr>
@@ -37,7 +48,7 @@
                             <th style="width: 10%">Trạng thái</th>
                             <th style="width: 10%"></th>
                         </tr>
-                        <tr ng-repeat ="item in productCategories">
+                        <tr ng-repeat="item in productCategories">
                             <td>{{item.ID}}</td>
                             <td>{{item.Name}}</td>
                             <td>{{item.CreateDate | date:'dd/MM/yyyy hh:mm:ss'}}</td>
@@ -47,7 +58,11 @@
                                 <button class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
-                       
+                        <tfoot>
+                            <tr>
+                                <td colspan="4">Tổng số bản ghi :{{TotalCount}}</td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>

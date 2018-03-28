@@ -8,15 +8,24 @@
 
         $scope.page = 0;
         $scope.pagesCount = 0;
-
+      
         $scope.getProoductCategories = getProoductCategories;
+
+        $scope.keyword = '';
+
+        $scope.search = search;
+
+        function search() {
+            getProoductCategories();
+        }
 
         function getProoductCategories(page) {
             page = page || 0;
             var config= {
                 params: {
                     page: page,
-                    pageSize:20
+                    pageSize: 2,
+                    keyword: $scope.keyword 
                 }
             }
 
