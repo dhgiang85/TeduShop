@@ -15,6 +15,11 @@
 
         $scope.search = search;
 
+        //$scope.addProductCategory = addProductCategory;
+
+        //function addProductCategory() {
+           
+        //}
         function search() {
             getProoductCategories();
         }
@@ -24,7 +29,7 @@
             var config= {
                 params: {
                     page: page,
-                    pageSize: 2,
+                    pageSize: 20,
                     keyword: $scope.keyword 
                 }
             }
@@ -33,10 +38,7 @@
             apiService.get('/api/productcategory/getall', config, function (result) {
                 if (result.data.TotalCount === 0) {
                     notificationService.displayWarning('Không có bản ghi được tìm thấy.');
-                } else {
-                    notificationService.displaySuccess('Đã tìm thấy ' + result.data.TotalCount + ' bản ghi.');
-                }
-
+                } 
                 $scope.productCategories = result.data.Items;
 
                 $scope.page = result.data.Page;
