@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 using AutoMapper;
 using TeduShop.Model.Models;
 using TeduShop.Service;
@@ -133,6 +134,45 @@ namespace TeduShop.Web.Api
                     var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(dbProductCategory);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
+
+
+                return response;
+            });
+        }
+        [Route("delete")]
+        [HttpDelete]
+        public HttpResponseMessage delete(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                
+                var oldProductCategory = _productCategoryService.Delete(id);
+                _productCategoryService.SaveChanges();
+
+                var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(oldProductCategory);
+                response = request.CreateResponse(HttpStatusCode.OK, responseData);
+
+
+                return response;
+            });
+        }
+        [Route("deletemulti")]
+        [HttpDelete]
+        public HttpResponseMessage deleteMulti(HttpRequestMessage request, string checkedProductCategories)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+
+                HttpResponseMessage response = null;
+                var listProductCategory = new JavaScriptSerializer().Deserialize<List<int>>(checkedProductCategories);
+                foreach (var item in listProductCategory)
+                {
+                    _productCategoryService.Delete(item);
+                }
+              
+                _productCategoryService.SaveChanges();
+                response = request.CreateResponse(HttpStatusCode.OK, listProductCategory.Count);
 
 
                 return response;
