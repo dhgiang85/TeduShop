@@ -13,6 +13,14 @@
             height:'200px'
         }
         $scope.AddProduct = AddProduct;
+        $scope.ChooseImage = function  ChooseImage(){
+            var finder = new CKFinder();
+            finder.selectActionFunction = function(fileUrl) {
+                $scope.product.Image = fileUrl;
+            }
+            finder.popup();
+        };
+
 
         function AddProduct() {
             apiService.post('/api/product/create', $scope.product,
