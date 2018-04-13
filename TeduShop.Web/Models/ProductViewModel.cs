@@ -39,10 +39,8 @@ namespace TeduShop.Web.Models
         public bool? HotFlag { get; set; }
 
         public int? ViewCount { get; set; }
-        
-        public virtual ProductCategoryViewModel ProductCategory { get; set; }
 
-        public virtual List<ProductTagViewModel> ProductTags { set; get; }
+        public string Tags { get; set; }
 
         public DateTime? CreateDate { get; set; }
 
@@ -57,5 +55,9 @@ namespace TeduShop.Web.Models
         public string MetaDescription { get; set; }
 
         public bool Status { get; set; }
+
+        public virtual ProductCategoryViewModel ProductCategory { get; set; }
+
+        public virtual List<ProductTagViewModel> ProductTags { set; get; }
     }
 }

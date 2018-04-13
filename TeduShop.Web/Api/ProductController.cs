@@ -52,14 +52,14 @@ namespace TeduShop.Web.Api
                 int totalRow = 0;
                 var model = _productService.GetAll(keyword);
                 totalRow = model.Count();
-                var query = model.OrderByDescending(x=>x.CreateDate).Skip(page*pageSize).Take(pageSize);
+                var query = model.OrderByDescending(x => x.CreateDate).Skip(page*pageSize).Take(pageSize);
                 var responseData = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(query);
                 PaginationSet<ProductViewModel> paginationSet = new PaginationSet<ProductViewModel>()
                 {
                     Items = responseData,
-                    Page =  page,
+                    Page = page,
                     TotalCount = totalRow,
-                    TotalPages =(int) Math.Ceiling((decimal)totalRow/pageSize),
+                    TotalPages = (int) Math.Ceiling((decimal) totalRow/pageSize),
                 };
                 var responese = request.CreateResponse(HttpStatusCode.OK, paginationSet);
                 return responese;

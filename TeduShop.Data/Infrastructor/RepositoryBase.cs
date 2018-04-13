@@ -75,7 +75,7 @@ namespace TeduShop.Data.Infrastructor
 
         public virtual int Count(Expression<Func<T, bool>> where)
         {
-            return dbSet.Count();
+            return dbSet.Count(where);
         }
 
         //public virtual IQueryable<T> GetAll(string[] includes = null)
@@ -105,7 +105,14 @@ namespace TeduShop.Data.Infrastructor
 
         public virtual T GetSingleByCondition(Expression<Func<T, bool>> expression, string[] includes = null)
         {
-            return GetAll(includes).FirstOrDefault();
+            if (includes != null && includes.Count() > 0)
+            {
+                var query = dataContext.Set<T>().Include(includes.First());
+                foreach (var include in includes.Skip(1))
+                    query = query.Include(include);
+                return query.FirstOrDefault(expression);
+            }
+            return dataContext.Set<T>().FirstOrDefault(expression);
         }
 
         public virtual IEnumerable<T> GetMulti(Expression<Func<T, bool>> predicate, string[] includes = null)
@@ -118,16 +125,18 @@ namespace TeduShop.Data.Infrastructor
                     query = query.Include(include);
                 return query.Where<T>(predicate).AsQueryable<T>();
             }
+
             return dataContext.Set<T>().Where<T>(predicate).AsQueryable<T>();
         }
 
         public virtual IEnumerable<T> GetMultiPaging(Expression<Func<T, bool>> predicate, out int total, int index = 0,
-            int size = 50,
+            int size = 20,
             string[] includes = null)
         {
             int skipCount = index * size;
             IQueryable<T> _resetSet;
-            // HANDLE INCLUDE FOR ASSOCIATED OBJECTS  IF APPLICABLE
+
+            //HANDLE INCLUDES FOR ASSOCIATED OBJECTS IF APPLICABLE
             if (includes != null && includes.Count() > 0)
             {
                 var query = dataContext.Set<T>().Include(includes.First());
@@ -139,6 +148,7 @@ namespace TeduShop.Data.Infrastructor
             {
                 _resetSet = predicate != null ? dataContext.Set<T>().Where<T>(predicate).AsQueryable() : dataContext.Set<T>().AsQueryable();
             }
+
             _resetSet = skipCount == 0 ? _resetSet.Take(size) : _resetSet.Skip(skipCount).Take(size);
             total = _resetSet.Count();
             return _resetSet.AsQueryable();
