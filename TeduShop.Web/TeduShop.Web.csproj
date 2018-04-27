@@ -196,6 +196,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\AccountController.cs" />
+    <Compile Include="Api\HomeController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
     <Compile Include="Api\ProductCategoryController.cs" />
     <Compile Include="Api\ProductController.cs" />
@@ -228,7 +229,7 @@
     <Content Include="app\app.js" />
     <Content Include="app\components\home\homeController.js" />
     <Content Include="app\components\home\homeView.html" />
-    <Content Include="app\components\login\rootController.js" />
+    <Content Include="app\components\home\rootController.js" />
     <Content Include="app\components\products\productAddController.js" />
     <Content Include="app\components\products\productAddView.html" />
     <Content Include="app\components\products\productEditController.js" />
@@ -248,7 +249,10 @@
     <Content Include="app\shared\filter\statusFilter.js" />
     <Content Include="app\shared\modules\tedushop.common.js" />
     <Content Include="app\shared\services\apiService.js" />
+    <Content Include="app\shared\services\authData.js" />
+    <Content Include="app\shared\services\authenticationService.js" />
     <Content Include="app\shared\services\commonService.js" />
+    <Content Include="app\shared\services\loginService.js" />
     <Content Include="app\shared\services\notificationService.js" />
     <Content Include="app\shared\views\baseView.html" />
     <Content Include="Assets\admin\css\AdminLTE.css" />
@@ -287,6 +291,8 @@
     <Content Include="Assets\admin\css\skins\skin-yellow.min.css" />
     <Content Include="Assets\admin\css\skins\_all-skins.css" />
     <Content Include="Assets\admin\css\skins\_all-skins.min.css" />
+    <Content Include="Assets\admin\img\AD.png" />
+    <Content Include="Assets\admin\img\AM.png" />
     <Content Include="Assets\admin\img\avatar.png" />
     <Content Include="Assets\admin\img\avatar04.png" />
     <Content Include="Assets\admin\img\avatar2.png" />
@@ -320,6 +326,22 @@
     <Content Include="Assets\admin\js\demo.js" />
     <Content Include="Assets\admin\js\pages\dashboard.js" />
     <Content Include="Assets\admin\js\pages\dashboard2.js" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\build\loading-bar.css" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\build\loading-bar.js" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\build\loading-bar.min.css" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\build\loading-bar.min.js" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\Gruntfile.js" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\index.js" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\src\loading-bar.css" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\src\loading-bar.js" />
+    <Content Include="Assets\admin\libs\angular-local-storage\.gitattributes" />
+    <Content Include="Assets\admin\libs\angular-local-storage\.gitignore" />
+    <Content Include="Assets\admin\libs\angular-local-storage\demo\demo-app.js" />
+    <Content Include="Assets\admin\libs\angular-local-storage\demo\demo-style.css" />
+    <Content Include="Assets\admin\libs\angular-local-storage\demo\demo.html" />
+    <Content Include="Assets\admin\libs\angular-local-storage\dist\angular-local-storage.js" />
+    <Content Include="Assets\admin\libs\angular-local-storage\dist\angular-local-storage.min.js" />
+    <Content Include="Assets\admin\libs\angular-local-storage\index.js" />
     <Content Include="Assets\admin\libs\angular-ui-router\release\angular-ui-router.js" />
     <Content Include="Assets\admin\libs\angular-ui-router\release\angular-ui-router.min.js" />
     <Content Include="Assets\admin\libs\angular-ui-router\src\common.js" />
@@ -4446,6 +4468,25 @@
     <Content Include="Assets\admin\libs\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Assets\admin\libs\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Assets\admin\libs\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\.bower.json" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\bower.json" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\CHANGELOG.md" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\CONTRIBUTING.md" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\ISSUE_TEMPLATE.md" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\LICENSE" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\package.json" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\PULL_REQUEST_TEMPLATE.md" />
+    <Content Include="Assets\admin\libs\angular-loading-bar\README.md" />
+    <Content Include="Assets\admin\libs\angular-local-storage\.bower.json" />
+    <Content Include="Assets\admin\libs\angular-local-storage\.bowerrc" />
+    <Content Include="Assets\admin\libs\angular-local-storage\.editorconfig" />
+    <Content Include="Assets\admin\libs\angular-local-storage\.travis.yml" />
+    <Content Include="Assets\admin\libs\angular-local-storage\bower.json" />
+    <Content Include="Assets\admin\libs\angular-local-storage\CHANGELOG.md" />
+    <Content Include="Assets\admin\libs\angular-local-storage\dist\angular-local-storage.min.js.map" />
+    <Content Include="Assets\admin\libs\angular-local-storage\LICENSE" />
+    <Content Include="Assets\admin\libs\angular-local-storage\package.json" />
+    <Content Include="Assets\admin\libs\angular-local-storage\README.md" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
