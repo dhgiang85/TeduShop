@@ -1,12 +1,8 @@
 ﻿using System.Collections.Generic;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using TeduShop.Model.Models;
 
 namespace TeduShop.Data.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -49,10 +45,10 @@ namespace TeduShop.Data.Migrations
 
             //    var adminUser = manager.FindByEmail("tedu.international@gmail.com");
 
-            //    manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" }); 
+            //    manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
             //}
 
-            CreateProductCategoy(context);
+            //CreateProductCategoy(context);
         }
 
         private void CreateProductCategoy(TeduShop.Data.TeduShopDbContext context)
